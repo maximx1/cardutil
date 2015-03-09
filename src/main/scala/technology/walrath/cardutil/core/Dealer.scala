@@ -8,13 +8,12 @@ object Dealer {
   }
   
   def newDeck: Seq[Card] = {
-    Suit.values.flatMap { x => {1 to 13 map(Card(_, x))} }.toSeq
+    for(x <- Suit.values.toList; y <- 1 to 13) yield Card(y, x)
   }
 }
 
 object Main {
   def main(args: Array[String]) {
-    println(Dealer.newDeck.size)
     Dealer.newDeck.foreach { x => { println(x.value + " of " + x.suit) } }
   }
 }
