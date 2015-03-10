@@ -34,4 +34,16 @@ class DealerTest extends FlatSpec with Matchers {
       shuffledDeck(51) != (Card(13, Suit.Diamonds))
     )
   }
+  
+  "A default dealer" should "be able to deal a texas hold 'em hand" in {
+    val (deck, hands) = deal()
+    deck should have length 42
+    hands should have length 5
+    hands filter(_.size == 2) should have length 5
+  }
+  
+  it should "not have duplicates cards in the hands and deck" in {
+    val (deck, hands) = deal()
+    (hands.flatten ++ deck).toSet.size should be (52)
+  }
 }
