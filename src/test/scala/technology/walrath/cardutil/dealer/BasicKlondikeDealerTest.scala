@@ -1,11 +1,11 @@
 package technology.walrath.cardutil.dealer
 
 import org.scalatest.{FlatSpec, Matchers}
-//import BasicKlondikeDealer._
 
 class BasicKlondikeDealerTest extends FlatSpec with Matchers {
   "A klondike dealer deal" should "be a basic round of solitaire" in {
     val (deck, stacks) = BasicKlondikeDealer.deal()
+    
     deck should have length 24
     stacks should have length 7
     stacks(0) should have length 1
