@@ -2,7 +2,7 @@ package technology.walrath.cardutil.dealer
 
 import org.scalatest.{FlatSpec, Matchers}
 import Dealer._
-import technology.walrath.cardutil.core.Suit
+import technology.walrath.cardutil.core.{Card, Suit}
 
 class DealerTest extends FlatSpec with Matchers {
   "New Deck" should "return a fresh new deck in 'bicycle' order" in {
