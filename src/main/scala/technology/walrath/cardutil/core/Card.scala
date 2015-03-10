@@ -9,5 +9,5 @@ import Suit._
 case class Card(value: Int, suit: Suit.Value)
 
 object Card {
-  def validateValue(value: Int): Boolean = { value > 0 && value < 14 }
+  def validateValue(card: Card): Boolean = { card.value > 0 && card.value < 14 }
 }
