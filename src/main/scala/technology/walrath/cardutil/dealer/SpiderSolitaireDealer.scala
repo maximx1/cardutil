@@ -3,7 +3,7 @@ package technology.walrath.cardutil.dealer
 import technology.walrath.cardutil.core.Card
 import technology.walrath.cardutil.dealer.decks.DoubleStandardDeck
 
-object SpiderSolitaireDealer extends Dealer with DoubleStandardDeck {
+class SpiderSolitaireDealer extends Dealer with DoubleStandardDeck {
   def deal(hands: Int = 10, limit: Int = 6): (Seq[Card], Array[Seq[Card]]) = {
     val (deck, largerStacks) = subDeal(shuffle (openDeck), 4, 6)
     val (leftover, smallerStacks) = subDeal(deck, 6, 5)

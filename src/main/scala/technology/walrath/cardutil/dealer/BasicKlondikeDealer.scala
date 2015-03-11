@@ -1,8 +1,9 @@
 package technology.walrath.cardutil.dealer
 
 import technology.walrath.cardutil.core.Card
+import technology.walrath.cardutil.dealer.decks.StandardDeck
 
-object BasicKlondikeDealer extends Dealer {
+class BasicKlondikeDealer extends Dealer with StandardDeck {
   def deal(hands: Int = 7, limit: Int = 7): (Seq[Card], Array[Seq[Card]]) = {
     val cards = shuffle(openDeck)
     val triangleNumbers = Stream.from(0).map(n => n * (n + 1) / 2)

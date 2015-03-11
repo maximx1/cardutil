@@ -1,12 +1,20 @@
 package technology.walrath.cardutil.dealer
 
-import org.scalatest.{FlatSpec, Matchers}
-import Dealer._
-import technology.walrath.cardutil.core.{Card, Suit}
+import org.scalatest.{FlatSpec, Matchers, BeforeAndAfter} 
+import technology.walrath.cardutil.core.TestUtils._
+import technology.walrath.cardutil.core.{Card,Suit}
 
-class DealerTest extends FlatSpec with Matchers {
+object DealerTest extends FlatSpec with Matchers with BeforeAndAfter {
+  
+  var dealer: Dealer = null
+  
+  before {
+    dealer = new TestDealer
+  }
+  
   "A shuffle of a new deck" should "muck up the order so that it's not 'bicycle' order" in {
-    val shuffledDeck = shuffle (openDeck)
+    
+    val shuffledDeck = dealer.shuffle (dealer.openDeck)
     assert(
       shuffledDeck(0) != (Card(1, Suit.Spades)) ||
       shuffledDeck(12) != (Card(13, Suit.Spades)) ||
@@ -17,44 +25,5 @@ class DealerTest extends FlatSpec with Matchers {
       shuffledDeck(39) != (Card(1, Suit.Diamonds)) ||
       shuffledDeck(51) != (Card(13, Suit.Diamonds))
     )
-  }
-  
-  "A dealer" should "be able to deal a texas hold 'em hand by default" in {
-    val (deck, hands) = deal()
-    deck should have length 42
-    hands should have length 5
-    hands filter(_.size == 2) should have length 5
-  }
-  
-  it should "not have duplicates cards in the hands and deck" in {
-    val (deck, hands) = deal()
-    (hands.flatten ++ deck).toSet.size should be (52)
-  }
-  
-  it should "return 26 hands with 2 cards each when asked to give 50 hands at 2 cards apiece" in {
-    val (deck, hands) = deal(50, 2)
-    deck should have length 0
-    hands should have length 26
-    hands.filter(_.size == 2) should have length 26
-  }
-  
-  it should "return one hand with 52 cards when asked to return a limit greater than 52" in {
-    val (deck, hands) = deal(10, 60)
-    deck should have length 0
-    hands should have length 1
-  }
-  
-  it should "return 52 hands with 1 card each when asked to return 52 hands with a limit of one" in {
-    val (deck, hands) = deal(52, 1)
-    deck should have length 0
-    hands should have length 52
-    hands.filter(_.size == 1) should have length 52
-  }
-  
-  it should "return an uneven number of cards if limit and hands isn't evenly divisible and uses the entire deck" in {
-    val (deck, hands) = deal(18, 3)
-    deck should have length 0
-    hands should have length 18
-    hands.filter(_.size == 3) should have length 17
   }
 }

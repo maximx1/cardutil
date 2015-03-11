@@ -4,7 +4,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class BasicKlondikeDealerTest extends FlatSpec with Matchers {
   "A klondike dealer deal" should "be a basic round of solitaire" in {
-    val (deck, stacks) = BasicKlondikeDealer.deal()
+    val (deck, stacks) = new BasicKlondikeDealer().deal()
     
     deck should have length 24
     stacks should have length 7
@@ -18,7 +18,7 @@ class BasicKlondikeDealerTest extends FlatSpec with Matchers {
   }
   
   it should "not have any duplicates between the deck and the stacks." in {
-    val (deck, stacks) = BasicKlondikeDealer.deal()
+    val (deck, stacks) = new BasicKlondikeDealer().deal()
     (stacks.flatten ++ deck).toSet.size should be (52)
   }
 }

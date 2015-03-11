@@ -1,10 +1,17 @@
 package technology.walrath.cardutil.dealer
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.{FlatSpec, Matchers, BeforeAndAfter}
 
-class SpiderSolitaireDealerTest extends FlatSpec with Matchers {
+class SpiderSolitaireDealerTest extends FlatSpec with Matchers with BeforeAndAfter {
+  
+  var dealer: SpiderSolitaireDealer = null
+  
+  before {
+    dealer = new SpiderSolitaireDealer()
+  }
+  
   "A Spider dealer deal" should "be a basic round of spider solitaire" in {
-    val (deck, stacks) = SpiderSolitaireDealer.deal()
+    val (deck, stacks) = dealer.deal()
     
     deck should have length 50
     stacks should have length 10
