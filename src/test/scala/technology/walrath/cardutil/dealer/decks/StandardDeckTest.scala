@@ -1,11 +1,11 @@
 package technology.walrath.cardutil.dealer.decks
 
-import org.scalatest.{FlatSpec, Matchers}
 import technology.walrath.cardutil.core.{Card, Suit}
+import technology.walrath.cardutil.testing.TestSpec
 
 object StandardDeckTestMock extends StandardDeck { } //Just a sample impl to test the trait
 
-class StandardDeckTest extends FlatSpec with Matchers {
+class StandardDeckTest extends TestSpec {
   "Open Deck" should "return a fresh new deck in 'bicycle' order" in {
     val freshDeck = StandardDeckTestMock.openDeck
     freshDeck(0) should be (Card(1, Suit.Spades))

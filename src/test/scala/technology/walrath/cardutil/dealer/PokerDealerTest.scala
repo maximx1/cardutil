@@ -1,9 +1,9 @@
 package technology.walrath.cardutil.dealer
 
-import org.scalatest.{FlatSpec, Matchers, BeforeAndAfter}
 import technology.walrath.cardutil.core.{Card, Suit}
+import technology.walrath.cardutil.testing.TestSpec
 
-class PokerDealerTest extends FlatSpec with Matchers with BeforeAndAfter {
+class PokerDealerTest extends TestSpec {
   
   var dealer: PokerDealer = null
   

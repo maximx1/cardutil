@@ -1,8 +1,8 @@
 package technology.walrath.cardutil.dealer
 
-import org.scalatest.{FlatSpec, Matchers, BeforeAndAfter}
+import technology.walrath.cardutil.testing.TestSpec
 
-class SpiderSolitaireDealerTest extends FlatSpec with Matchers with BeforeAndAfter {
+class SpiderSolitaireDealerTest extends TestSpec {
   
   var dealer: SpiderSolitaireDealer = null
   
