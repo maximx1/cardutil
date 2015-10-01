@@ -17,7 +17,7 @@ class BasicKlondikeDealerTest extends TestSpec {
     stacks(6) should have length 7
   }
   
-  it should "not have any duplicates between the deck and the stacks." in {
+  it should "not have any duplicates between the deck and the stacks" in {
     val (deck, stacks) = new BasicKlondikeDealer().deal()
     (stacks.flatten ++ deck).toSet.size should be (52)
   }
